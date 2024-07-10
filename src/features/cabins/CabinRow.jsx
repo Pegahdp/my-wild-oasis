@@ -54,10 +54,10 @@ export default function CabinRow({ cabin }) {
     cabin;
 
   const { isDeleting, deleteCabin } = useDeleteCabin();
-  const { isCreating, creatCabin } = useCreateCabin();
+  const { isCreating, createCabin } = useCreateCabin();
 
   const handleDublicateCabin = () => {
-    creatCabin({
+    createCabin({
       name: `copy of ${name}`,
       image,
       maxCapacity,
@@ -87,7 +87,9 @@ export default function CabinRow({ cabin }) {
           </button>
         </div>
       </TableRow>
-      {showForm && <CreateCabinForm cabinToEdit={cabin} />}
+      {showForm && (
+        <CreateCabinForm cabinToEdit={cabin} setShowForm={setShowForm} />
+      )}
     </>
   );
 }
